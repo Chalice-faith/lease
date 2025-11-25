@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   minio:
     image: minio/minio
@@ -25,7 +27,7 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - "./mysql/data:/var/lib/mysql"
-      - "./mysql/conf/conf.d:etc/mysql/conf.d"
+      - "./mysql/conf/conf.d:/etc/mysql/conf.d"
       - "./mysql/logs:/var/log/mysql"
     restart: always
     privileged: true
@@ -42,5 +44,4 @@ services:
       - ./redis/data:/data
     restart: always
     privileged: true
-
     command: ["redis-server", "/etc/redis/redis.conf"]
