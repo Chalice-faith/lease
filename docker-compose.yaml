@@ -14,11 +14,6 @@ services:
       - "9001:9001"
     restart: always
     privileged: true
-    headlthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-      interval: 30s
-      timeout: 20s
-      retries: 3
   
   mysql:
     image: mysql:8.0
@@ -47,4 +42,5 @@ services:
       - ./redis/data:/data
     restart: always
     privileged: true
+
     command: ["redis-server", "/etc/redis/redis.conf"]
